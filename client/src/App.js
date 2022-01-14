@@ -14,7 +14,6 @@ import React from 'react';
 import Profile from './pages/Profile';
 
 function App() { 
-  //HEYYYYYYYYYY!!!!!
   // const [loginStatus, setLoginStatus] = useState(false);
   // const value = useMemo(() => ({ loginStatus, setloginStatus }), [loginStatus, setloginStatus]);
   let token = sessionStorage.getItem('token');
