@@ -10,18 +10,19 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Register2 from './pages/Register2';
-import React from 'react';
+import React, { createContext } from 'react';
 import Profile from './pages/Profile';
 
 function App() { 
-  // const [loginStatus, setLoginStatus] = useState(false);
-  // const value = useMemo(() => ({ loginStatus, setloginStatus }), [loginStatus, setloginStatus]);
   let token = sessionStorage.getItem('token');
+  const UserContext = createContext();
 
   return (
     <div className="App">
       <Router>
-        <Upnavbar />
+        <UserContext.Provider value={{token}}>
+          <Upnavbar />
+        </UserContext.Provider>
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
