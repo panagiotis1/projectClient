@@ -10,19 +10,16 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Register2 from './pages/Register2';
-import React, { createContext } from 'react';
+import React from 'react';
 import Profile from './pages/Profile';
 
 function App() { 
   let token = sessionStorage.getItem('token');
-  const UserContext = createContext();
 
   return (
     <div className="App">
       <Router>
-        <UserContext.Provider value={{token}}>
-          <Upnavbar />
-        </UserContext.Provider>
+        <Upnavbar />
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
