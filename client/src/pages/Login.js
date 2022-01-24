@@ -3,7 +3,7 @@ import React from 'react';
 import Axios from 'axios';
 import { useHistory } from "react-router-dom";
 
-function Login() {
+function Login(props) {
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     let history = useHistory();
@@ -35,7 +35,8 @@ function Login() {
                 console.log(response.data);
                 sessionStorage.setItem("token", response.data.token);
                 // setLoginStatus(true);
-                history.push('/');
+                props.setLogged(true);
+                history.push('/home');
             }
         });
     };

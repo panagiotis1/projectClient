@@ -15,18 +15,23 @@ import Profile from './pages/Profile';
 
 function App() { 
   let token = sessionStorage.getItem('token');
+  let initialState = (token !== null && token !== undefined);
+  let initialState2 = (token === null && token === undefined);
+  let [logged, setLogged] = React.useState(initialState);
+  let [loggedOut, setLoggedOut] = React.useState(initialState2);
 
   return (
     <div className="App">
       <Router>
-        <Upnavbar />
+        <Upnavbar logged={logged} setLogged={setLogged} loggedOut={loggedOut} setLoggedOut={setLoggedOut}></Upnavbar>
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/home" exact component={Home} />
           <Route path="/menu" exact component={Menu} />
           <Route path="/about" exact component={About} />
           <Route path="/contact" exact component={Contact} />
-          <Route path="/login" exact component={Login}/>
+          <Route path="/login" exact component={()=><Login setLogged={setLogged}></Login>}/>
           <Route path="/register" exact component={Register2}/>
           <PrivateRoute authed={typeof token == "string"} path="/profile" exact component={Profile}/>
         </Switch>
