@@ -16,14 +16,12 @@ import Profile from './pages/Profile';
 function App() { 
   let token = sessionStorage.getItem('token');
   let initialState = (token !== null && token !== undefined);
-  let initialState2 = (token === null && token === undefined);
   let [logged, setLogged] = React.useState(initialState);
-  let [loggedOut, setLoggedOut] = React.useState(initialState2);
 
   return (
     <div className="App">
       <Router>
-        <Upnavbar logged={logged} setLogged={setLogged} loggedOut={loggedOut} setLoggedOut={setLoggedOut}></Upnavbar>
+        <Upnavbar logged={logged} setLogged={setLogged}></Upnavbar>
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />

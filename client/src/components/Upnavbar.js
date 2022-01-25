@@ -7,7 +7,7 @@ function Upnavbar(props) {
     
     const logoutFunction = () => {
         sessionStorage.clear();
-        props.setLoggedOut(true);
+        props.setLogged(false);
     };
 
     if (token === null){
@@ -20,19 +20,20 @@ function Upnavbar(props) {
             </div>
         )
     } else {
-        if(props.logged){
-        return(
-            <div className="upnavbar">
-                <div className="rightSide">
-                    <div>
-                        <Link to="/profile"> Profile </Link>
-                        <Link to="/menu"> Menu </Link>
-                        <Link to="/home" onClick={()=>logoutFunction()}> Logout </Link>
+        if (props.logged) {
+            return(
+                <div className="upnavbar">
+                    <div className="rightSide">
+                        <div>
+                            <Link to="/profile"> Profile </Link>
+                            <Link to="/menu"> Menu </Link>
+                            <Link to="/home" onClick={()=>logoutFunction()}> Logout </Link>
+                        </div>
+                                            
                     </div>
-                                        
                 </div>
-            </div>
-        )}else if(props.loggedOut){
+            )
+        } else if (!props.logged) {
             return(
                 <div className="upnavbar">
                     <div className="rightSide">
