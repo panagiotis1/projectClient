@@ -28,8 +28,7 @@ function Upnavbar(props) {
                             <Link to="/profile"> Profile </Link>
                             <Link to="/menu"> Menu </Link>
                             <Link to="/home" onClick={()=>logoutFunction()}> Logout </Link>
-                        </div>
-                                            
+                        </div>           
                     </div>
                 </div>
             )
